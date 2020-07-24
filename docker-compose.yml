@@ -1,0 +1,23 @@
+version: '3'
+services:
+     wikiapp:
+        build: .
+        ports:
+                - "3000:3000"
+        container_name: wiki_frontend
+        environment:
+                - WIKI_HOST=postgreezy
+                - WIKI_DB=wiki
+                - WIKI_USER=wikijs
+                - WIKI_PASSWORD=wikijsrocks
+     postgreezy:
+        image: postgres:latest
+        ports:
+                - "5432:5432"
+        container_name: postgreezy
+        environment:
+                - POSTGRES_HOST=postgreezy
+                - POSTGRES_DB=wiki
+                - POSTGRES_USER=wikijs
+                - POSTGRES_PASSWORD=wikijsrocks
+
